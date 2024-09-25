@@ -7,8 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Height="50" Width="300" Margin="238,258,262,126" />
-        <TextBox Height="50" Width="300" Margin="238,167,262,217"/>
-
+        <StackPanel Margin="10">
+            <TextBox x:Name="caixaNome"  Margin="0,5"/>
+            <PasswordBox x:Name="caixaSenha"  Margin="0,5"/>
+            <TextBox x:Name="caixaCpf"  Margin="0,5"/>
+            <TextBox x:Name="caixaCargo"  Margin="0,5"/>
+            <TextBox x:Name="caixaContato"  Margin="0,5"/>
+            <Button Content="Cadastrar" Click="botaoCadastrar_Click" Margin="0,10"/>
+        </StackPanel>
     </Grid>
 </Window>
