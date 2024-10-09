@@ -8,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SQLite;
 
 
 namespace LoginCadastroDB
@@ -18,44 +17,58 @@ namespace LoginCadastroDB
     /// </summary>
     public partial class MainWindow : Window
     {
-        private SQLiteConnection _connection;
+        private ConexaoDB conexaoDB;
+        private Usuario usuario;
         public MainWindow()
         {
             InitializeComponent();
-            Conexao();
-        }
-
-        private void Conexao()
-        {
-            _connection = new SQLiteConnection("Data Source=EscolaDB.db; Version=3;");
-            _connection.Open();
+            conexaoDB = new ConexaoDB("Data Source = SistemaEscola.db");
+            usuario = new Usuario(conexaoDB);
         }
 
         private void botaoCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            string usuario = caixaNome.Text;
-            string senha = caixaSenha.Password; 
-            string cpf = caixaCpf.Text;
-            string cargo = caixaCargo.Text;
-            string contato = caixaContato.Text;
-
-            string inserirDados = "INSERT INTO Usuarios (Nome, Senha, CPF, Cargo, Contato) VALUES(@nome, @senha, @cpf, @cargo, @contato)";
-            SQLiteCommand mandaDados = new SQLiteCommand(inserirDados, _connection);
-            mandaDados.Parameters.AddWithValue("@nome", usuario);
-            mandaDados.Parameters.AddWithValue("@senha", senha);
-            mandaDados.Parameters.AddWithValue("@cpf", cpf);
-            mandaDados.Parameters.AddWithValue("@cargo", cargo);
-            mandaDados.Parameters.AddWithValue("@contato", contato);
-
-            try
+            /*
+            usuario.nome = caixaoNome.Text;
+            usuario.senha = caixaoSenha.Text;
+            usuario.cpf = Convert.ToInt32(caixaoCPF.Text);
+            usuario.contato = Convert.ToInt32(caixaoContato.Text);
+            usuario.cargo = caixaoCargo.Text;
+            usuario.salvaUsuarios();
+            MessageBox.Show("Usuário salvo com sucesso!");
+            */
+            Usuario teste = new Usuario(conexaoDB)
             {
-                mandaDados.ExecuteNonQuery();
-                MessageBox.Show("Dados salvos com sucesso!");
+                nome = "João",
+                senha = "123456",
+                cpf = 123456789,
+                contato = 987654321,
+                cargo = "Professor"
+            };
+            usuario.salvaUsuarios();
+
+
+        }
+
+        private void botaoListarTabelas_Click(object sender, RoutedEventArgs e)
+        {
+            var tabelas = conexaoDB.ListarTabelas();
+            StringBuilder listaTabelas = new StringBuilder("Tabelas no banco de dados:\n");
+
+            foreach (var tabela in tabelas)
+            {
+                listaTabelas.AppendLine(tabela);
             }
-            catch (Exception ex)
+
+            if (!tabelas.Contains("Usuarios"))
             {
-                MessageBox.Show("Erro: " + ex.Message);
+                MessageBox.Show("A tabela 'Usuarios' não foi encontrada.");
+            }
+            else
+            {
+                MessageBox.Show(listaTabelas.ToString());
             }
         }
     }
 }
+

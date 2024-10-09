@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel Margin="10">
-            <TextBox x:Name="caixaNome"  Margin="0,5"/>
-            <PasswordBox x:Name="caixaSenha"  Margin="0,5"/>
-            <TextBox x:Name="caixaCpf"  Margin="0,5"/>
-            <TextBox x:Name="caixaCargo"  Margin="0,5"/>
-            <TextBox x:Name="caixaContato"  Margin="0,5"/>
-            <Button Content="Cadastrar" Click="botaoCadastrar_Click" Margin="0,10"/>
-        </StackPanel>
+
+
+
+        <TextBox x:Name="caixaoNome" Height="50" Width="350" Margin="10,44,440,340"/>
+        <TextBox x:Name="caixaoSenha" Height="50" Width="350" Margin="440,44,10,340"/>
+        <TextBox x:Name="caixaoCPF" Height="50" Width="350" Margin="10,128,440,256"/>
+        <TextBox x:Name="caixaoContato" Height="50" Width="350" Margin="440,128,10,256"/>
+        <TextBox x:Name="caixaoCargo" Height="50" Width="350" Margin="10,217,440,167"/>
+        <Button x:Name="botaoCadastrar" Content="Salvar" Height="40" Width="150" Click="botaoCadastrar_Click" Margin="553,222,97,172"/>
+        <Button x:Name="botaoListarTabelas" Content="Listar Tabelas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="260,346,0,0" Click="botaoListarTabelas_Click"/>
     </Grid>
 </Window>
