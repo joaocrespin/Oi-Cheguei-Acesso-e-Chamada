@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Data.Sqlite;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,7 +9,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace LoginCadastroDB
 {
@@ -22,53 +22,28 @@ namespace LoginCadastroDB
         public MainWindow()
         {
             InitializeComponent();
-            conexaoDB = new ConexaoDB("Data Source = SistemaEscola.db");
+            conexaoDB = new ConexaoDB("Data Source=SistemaEscola.db");
             usuario = new Usuario(conexaoDB);
         }
 
         private void botaoCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            usuario.nome = caixaoNome.Text;
-            usuario.senha = caixaoSenha.Text;
-            usuario.cpf = Convert.ToInt32(caixaoCPF.Text);
-            usuario.contato = Convert.ToInt32(caixaoContato.Text);
-            usuario.cargo = caixaoCargo.Text;
-            usuario.salvaUsuarios();
-            MessageBox.Show("Usuário salvo com sucesso!");
-            */
-            Usuario teste = new Usuario(conexaoDB)
+            using (SqliteConnection conn = new SqliteConnection("Data Source=SistemaEscola.db"))
             {
-                nome = "João",
-                senha = "123456",
-                cpf = 123456789,
-                contato = 987654321,
-                cargo = "Professor"
-            };
-            usuario.salvaUsuarios();
-
-
-        }
-
-        private void botaoListarTabelas_Click(object sender, RoutedEventArgs e)
-        {
-            var tabelas = conexaoDB.ListarTabelas();
-            StringBuilder listaTabelas = new StringBuilder("Tabelas no banco de dados:\n");
-
-            foreach (var tabela in tabelas)
-            {
-                listaTabelas.AppendLine(tabela);
-            }
-
-            if (!tabelas.Contains("Usuarios"))
-            {
-                MessageBox.Show("A tabela 'Usuarios' não foi encontrada.");
-            }
-            else
-            {
-                MessageBox.Show(listaTabelas.ToString());
+                conn.Open();
+                using (SqliteCommand cmd = new SqliteCommand())
+                {
+                    cmd.Connection = conn; 
+                    string strSQL = "INSERT INTO Usuarios (Nome, CPF, Contato, Cargo) VALUES (@Nome, @CPF, @Contato, @Cargo)";
+                    cmd.CommandText = strSQL;
+                    cmd.Parameters.AddWithValue("@Nome", caixaoNome.Text);
+                    cmd.Parameters.AddWithValue("@CPF", caixaoCPF.Text);
+                    cmd.Parameters.AddWithValue("@Contato", caixaoContato.Text);
+                    cmd.Parameters.AddWithValue("@Cargo", caixaoCargo.Text);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
         }
     }
 }
-

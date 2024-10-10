@@ -15,7 +15,7 @@
         <TextBox x:Name="caixaoCPF" Height="50" Width="350" Margin="10,128,440,256"/>
         <TextBox x:Name="caixaoContato" Height="50" Width="350" Margin="440,128,10,256"/>
         <TextBox x:Name="caixaoCargo" Height="50" Width="350" Margin="10,217,440,167"/>
-        <Button x:Name="botaoCadastrar" Content="Salvar" Height="40" Width="150" Click="botaoCadastrar_Click" Margin="553,222,97,172"/>
-        <Button x:Name="botaoListarTabelas" Content="Listar Tabelas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="260,346,0,0" Click="botaoListarTabelas_Click"/>
+        <Button x:Name="botaoCadastrar" Content="Salvar" Height="40" Width="150" Click="botaoCadastrar_Click" Margin="72,331,578,63"/>
+        <Button x:Name="botaoListarTabelas" Content="Listar Tabelas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="260,346,0,0" Click="botaoCadastrar_Click"/>
     </Grid>
 </Window>
