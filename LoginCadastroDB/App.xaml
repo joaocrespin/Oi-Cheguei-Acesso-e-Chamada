@@ -4,6 +4,25 @@
              xmlns:local="clr-namespace:LoginCadastroDB"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!--Some o TextBlock-->
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <Style x:Key="EstiloTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="Padding" Value="14,0,0,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

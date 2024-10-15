@@ -5,17 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginCadastroDB"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280">
+
+
     <Grid>
-
-
-
-        <TextBox x:Name="caixaoNome" Height="50" Width="350" Margin="10,44,440,340"/>
-        <TextBox x:Name="caixaoSenha" Height="50" Width="350" Margin="440,44,10,340"/>
-        <TextBox x:Name="caixaoCPF" Height="50" Width="350" Margin="10,128,440,256"/>
-        <TextBox x:Name="caixaoContato" Height="50" Width="350" Margin="440,128,10,256"/>
-        <TextBox x:Name="caixaoCargo" Height="50" Width="350" Margin="10,217,440,167"/>
-        <Button x:Name="botaoCadastrar" Content="Salvar" Height="40" Width="150" Click="botaoCadastrar_Click" Margin="72,331,578,63"/>
-        <Button x:Name="botaoListarTabelas" Content="Listar Tabelas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="260,346,0,0" Click="botaoCadastrar_Click"/>
+        <Frame x:Name="Cavalete" NavigationUIVisibility="Hidden" Background="Aqua"/>
     </Grid>
 </Window>

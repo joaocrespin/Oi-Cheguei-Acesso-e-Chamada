@@ -1,0 +1,32 @@
+﻿<Page x:Class="LoginCadastroDB.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginCadastroDB"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280" Background="Blue"
+      Title="Page1">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Sejam Bem-Vindos!" Grid.Row="0" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox Grid.Row="1" Panel.ZIndex="0" x:Name="areaNome" Height="51" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="10,10,10,10"  Width="500" Style="{StaticResource EstiloTextBox}"/>
+        </Grid>
+        
+
+    </Grid>
+</Page>
