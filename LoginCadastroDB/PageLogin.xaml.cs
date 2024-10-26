@@ -31,27 +31,30 @@ namespace LoginCadastroDB
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteConnection conn = _conexao.AbrirConexao();
-            string strSql = "SELECT COUNT(1) FROM [Funcionario] WHERE [Nome] = @Nome AND [Senha] = @Senha";
-
-            using (SQLiteCommand cmd = new SQLiteCommand(strSql, conn))
+            try
             {
-                cmd.Parameters.AddWithValue("@Nome", areaNome.Text);
-                cmd.Parameters.AddWithValue("@Senha", areaSenha.Password);
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count == 1)
+                if (string.IsNullOrWhiteSpace(areaLogin.Text) || string.IsNullOrWhiteSpace(areaSenha.Password))
                 {
-                    MessageBox.Show("Login bem-sucedido!");
+                    MessageBox.Show("Preencha os campos vazios!");
                 }
                 else
                 {
-                    MessageBox.Show("Nome de usuário ou senha incorretos.");
+                    Usuario user = new Usuario(_conexao);
+                    bool sucesso = user.MetodoLogin(areaLogin.Text, areaSenha.Password);
+                    if (sucesso)
+                    {
+                        MessageBox.Show("Login bem sucedido!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login ou senha incorretos!");
+                    }
                 }
             }
-
-            _conexao.FecharConexao();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,6 +62,8 @@ namespace LoginCadastroDB
             this.NavigationService.Navigate(new PageCadastro());
 
         }
+
+        
     }
 }
 

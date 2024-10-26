@@ -30,42 +30,39 @@ namespace LoginCadastroDB
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //using (SQLiteConnection conn = new SQLiteConnection("Data Source=\"C:\\Users\\Cliente\\source\\repos\\LoginCadastroDB\\ChegouBD.db\""))
-            //{
-            //    using (SQLiteCommand cmd = new SQLiteCommand())
-            //    {
-            //        string strSql = "INSERT INTO [User] ([Nome], [Senha]) VALUES ('" +
-            //        Caixa1.Text + "', '" +
-            //        Caixa2.Text + "')";
-            //        cmd.CommandText = strSql;
-            //        cmd.Connection = conn;
-            //        conn.Open();
-            //        cmd.ExecuteNonQuery();
-            //        conn.Close();
-            //    }
-            //}
             try
             {
-                SQLiteConnection conn = _conexao.AbrirConexao();
-                string strSql = "INSERT INTO [Funcionario] ([Nome], [Senha], [CPF], [Cargo]) VALUES (@Nome, @Senha, @CPF, @Cargo)";
-                using (SQLiteCommand cmd = new SQLiteCommand(strSql, conn))
+                if (string.IsNullOrWhiteSpace(areaNome.Text) || string.IsNullOrWhiteSpace(areaSenha.Password) || string.IsNullOrWhiteSpace(areaCPF.Text) || string.IsNullOrWhiteSpace(areaCargo.Text))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", areaNome.Text);
-                    cmd.Parameters.AddWithValue("@Senha", areaSenha.Password);
-                    cmd.Parameters.AddWithValue("@CPF", areaCPF.Text);
-                    cmd.Parameters.AddWithValue("@Cargo", areaCargo.Text);
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Preencha os campos vazios!");
                 }
-                _conexao.FecharConexao();
+                else if (areaSenha.Password != areaRepetirSenha.Password)
+                {
+                    MessageBox.Show("As senhas não coincidem...");
+                }
+                else if (areaCPF.Text.Length != 11 || !areaCPF.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("CPF inválido!");
+                }
+                else
+                {
+                    Usuario user = new Usuario(_conexao);
+                    user.MetodoCadastro(areaNome.Text, areaSenha.Password, areaCPF.Text, areaCargo.Text);
+                    MessageBox.Show("Cadastrado com sucesso!");
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
-            }
+            } 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new PageLogin());
         }
+
+        
     }
+
+
 }
