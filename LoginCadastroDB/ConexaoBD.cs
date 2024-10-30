@@ -13,7 +13,7 @@ namespace LoginCadastroDB
     class ConexaoBD
     {
         private SQLiteConnection conn;
-        private string stringConexao = "Data Source=C:\\Users\\Cliente\\source\\repos\\LoginCadastroDB\\ChegouBD.db";
+        private string stringConexao = "Data Source=\"C:\\Users\\Cliente\\source\\repos\\ProjetoEscola\\ChegouBD.db\"";
 
         public ConexaoBD() 
         {

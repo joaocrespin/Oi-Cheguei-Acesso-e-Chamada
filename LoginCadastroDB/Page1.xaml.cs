@@ -24,5 +24,10 @@ namespace LoginCadastroDB
         {
             InitializeComponent();
         }
+
+        private void areaSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

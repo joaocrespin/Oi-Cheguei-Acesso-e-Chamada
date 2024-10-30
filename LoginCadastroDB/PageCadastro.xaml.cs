@@ -28,7 +28,7 @@ namespace LoginCadastroDB
             _conexao = new ConexaoBD();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -56,12 +56,47 @@ namespace LoginCadastroDB
             } 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        
+        private void areaSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(areaSenha.Password))
+            {
+                labelSenha.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                labelSenha.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void areaRepetirSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(areaRepetirSenha.Password))
+            {
+                labelRepetirSenha.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                labelRepetirSenha.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void areaCargo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (areaCargo.Text != null)
+            {
+                labelCargo.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                labelCargo.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new PageLogin());
         }
-
-        
     }
 
 

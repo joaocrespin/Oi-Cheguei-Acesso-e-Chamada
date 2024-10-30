@@ -57,7 +57,19 @@ namespace LoginCadastroDB
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void areaSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(areaSenha.Password))
+            {
+                labelSenha.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                labelSenha.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void pagCadastro(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new PageCadastro());
 
