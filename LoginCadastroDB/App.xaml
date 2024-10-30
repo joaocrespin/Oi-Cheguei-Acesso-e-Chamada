@@ -69,7 +69,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border x:Name="Fundo" Background="White" BorderBrush="#E2E5E9" BorderThickness="1" CornerRadius="0,5,5,0">
-                            <TextBlock Text="V" FontSize="14" FontWeight="Bold" Foreground="#333333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="V" FontSize="14"  Foreground="#333333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">

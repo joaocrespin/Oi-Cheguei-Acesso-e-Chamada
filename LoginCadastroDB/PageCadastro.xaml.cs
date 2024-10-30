@@ -49,6 +49,7 @@ namespace LoginCadastroDB
                     Usuario user = new Usuario(_conexao);
                     user.MetodoCadastro(areaNome.Text, areaSenha.Password, areaCPF.Text, areaCargo.Text);
                     MessageBox.Show("Cadastrado com sucesso!");
+                    this.NavigationService.Navigate(new PageLogin());
                 }
             }
             catch (Exception ex) {
