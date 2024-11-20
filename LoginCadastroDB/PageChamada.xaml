@@ -1,0 +1,34 @@
+﻿<Page x:Class="LoginCadastroDB.PageChamada"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginCadastroDB"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280" Background="#0A88EE"
+      Title="PageChamada">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="20" Background="#FFFFFF">
+            <DataGrid x:Name="dGChamar" Height="350" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeColumns="False" HeadersVisibility="Column" CanUserSortColumns="False" CanUserReorderColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Collapsed"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="350"/>
+                    <DataGridTextColumn Header="Classe" Binding="{Binding Turma}" Width="80"/>
+                    <DataGridTextColumn Header="Responsável" Binding="{Binding Responsavel}" Width="350"/>
+                    <DataGridTemplateColumn Header="Chamar" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Chamar" VerticalAlignment="Center" HorizontalAlignment="Center" Click="BotaoChamar_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</Page>

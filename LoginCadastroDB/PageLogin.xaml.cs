@@ -33,17 +33,18 @@ namespace LoginCadastroDB
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(areaLogin.Text) || string.IsNullOrWhiteSpace(areaSenha.Password))
+                if (string.IsNullOrWhiteSpace(campoLogin.Text) || string.IsNullOrWhiteSpace(campoSenha.Password))
                 {
                     MessageBox.Show("Preencha os campos vazios!");
                 }
                 else
                 {
                     Usuario user = new Usuario(_conexao);
-                    bool sucesso = user.MetodoLogin(areaLogin.Text, areaSenha.Password);
+                    bool sucesso = user.MetodoLogin(campoLogin.Text, campoSenha.Password);
                     if (sucesso)
                     {
                         MessageBox.Show("Login bem sucedido!");
+                        this.NavigationService.Navigate(new PageChamada());
                     }
                     else
                     {
@@ -59,13 +60,13 @@ namespace LoginCadastroDB
 
         private void areaSenha_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(areaSenha.Password))
+            if (string.IsNullOrEmpty(campoSenha.Password))
             {
-                labelSenha.Visibility = Visibility.Visible;
+                textBlockSenha.Visibility = Visibility.Visible;
             }
             else
             {
-                labelSenha.Visibility = Visibility.Collapsed;
+                textBlockSenha.Visibility = Visibility.Hidden;
             }
         }
 
