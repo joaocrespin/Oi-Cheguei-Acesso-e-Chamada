@@ -40,10 +40,10 @@ namespace LoginCadastroDB
             string strSql = "SELECT * FROM Aluno";
             using (SQLiteCommand cmd = new SQLiteCommand(strSql, conn))
             {
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
-                        {
+                        while (reader.Read()) //Enquanto há registros de alunos no banco de dadosos transforma em objetos do tipo Aluno 
+                    {
                             Aluno aluno = new Aluno
                             {
                                 Id = Convert.ToInt32(reader["Id"]),
@@ -56,12 +56,16 @@ namespace LoginCadastroDB
                     }
             }
             _conexao.FecharConexao();
-            dGChamar.ItemsSource = alunos;
+            dGChamar.ItemsSource = alunos; //Preenche o ItemSource com os objetos da lista de alunos
         }
 
         private void BotaoChamar_Click(object sender, RoutedEventArgs e)
         {
-
+            Button chamar = (Button)sender; //as Button
+            DataGridRow linha = DataGridRow.GetRowContainingElement(chamar);
+            var item = linha.Item as Aluno; 
+            WindowCheguei cheguei = new WindowCheguei(item.Nome, item.Responsavel);
+            cheguei.Show();
         }
 
 
