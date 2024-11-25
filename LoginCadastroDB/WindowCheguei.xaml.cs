@@ -13,6 +13,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Speech.Synthesis;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LoginCadastroDB
 {
@@ -21,13 +23,18 @@ namespace LoginCadastroDB
     /// </summary>
     public partial class WindowCheguei : Window
     {
+        private SpeechSynthesizer voz;
         DispatcherTimer timer = new DispatcherTimer();
 
         public WindowCheguei(string _aluno, string _responsavel)
         {
             InitializeComponent();
+
+            voz = new SpeechSynthesizer();
+
             DefinirChamada(_aluno, _responsavel);
             Temporizador();
+            ChamarAluno(_aluno);
         }
 
         private void DefinirChamada(string aluno, string responsavel)
@@ -49,6 +56,10 @@ namespace LoginCadastroDB
             this.Close();
         }
 
+        public void ChamarAluno(string nome)
+        {
+            voz.SpeakAsync(nome);
+        }
 
     }
 }
