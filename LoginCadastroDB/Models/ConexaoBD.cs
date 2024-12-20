@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace LoginCadastroDB
 {
@@ -13,6 +14,7 @@ namespace LoginCadastroDB
     class ConexaoBD
     {
         private SQLiteConnection conn;
+        //TODO: Data source deve ser relativa procurando apenas a DB
         private string stringConexao = "Data Source=\"C:\\Users\\Cliente\\source\\repos\\ProjetoEscola\\ChegouBD.db\"";
 
         public ConexaoBD() 

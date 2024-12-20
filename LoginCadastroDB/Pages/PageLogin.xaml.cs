@@ -29,7 +29,7 @@ namespace LoginCadastroDB
             _conexao = new ConexaoBD();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void BotaoLogin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -58,25 +58,39 @@ namespace LoginCadastroDB
             }
         }
 
-        private void areaSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        private void CampoSenha_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(campoSenha.Password))
             {
-                textBlockSenha.Visibility = Visibility.Visible;
+                labelSenha.Visibility = Visibility.Visible;
             }
             else
             {
-                textBlockSenha.Visibility = Visibility.Hidden;
+                labelSenha.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void pagCadastro(object sender, RoutedEventArgs e)
+        private void BotaoCadastro_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new PageCadastro());
 
         }
 
-        
+        private void CampoLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BotaoLogin_Click(botaoLogin, e);
+            }
+        }
+
+        private void CampoSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BotaoLogin_Click(botaoLogin, e);
+            }
+        }
     }
 }
 

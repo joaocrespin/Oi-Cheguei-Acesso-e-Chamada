@@ -37,7 +37,7 @@ namespace LoginCadastroDB
         {
             List<Aluno> alunos = new List<Aluno>();
             SQLiteConnection conn = _conexao.AbrirConexao();
-            string strSql = "SELECT * FROM Aluno";
+            string strSql = "SELECT * FROM Alunos";
             using (SQLiteCommand cmd = new SQLiteCommand(strSql, conn))
             {
                 using (SQLiteDataReader reader = cmd.ExecuteReader())

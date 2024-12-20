@@ -8,11 +8,25 @@
         <!--Some o TextBlock-->
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
+        <Style x:Key="EstiloTextBlock" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="345"/>
+            <Setter Property="Margin" Value="27 0 0 0"/>
+            <Setter Property="Foreground" Value="#9094B6"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+        </Style>
+
         <Style x:Key="EstiloTextBox" TargetType="TextBox">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="Padding" Value="14,0,0,0"/>
+            <Setter Property="Padding" Value="5,0,0,0"/>
+            <Setter Property="Width" Value="450"/>
+            <Setter Property="Height" Value="45"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -27,7 +41,7 @@
         <Style x:Key="EstiloPasswordBox" TargetType="PasswordBox">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="Padding" Value="14,0,0,0"/>
+            <Setter Property="Padding" Value="5,0,0,0"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -44,6 +58,7 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background" Value="#F9E247"/>
             <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -113,7 +128,8 @@
         </Style>
 
         <Style x:Key="EstiloInvisível" TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#333333"/>
             <Setter Property="Template">
@@ -138,6 +154,105 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+        <Style TargetType="Label" x:Key="LabelCadastro">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10, 5, 0, 40"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextBlockCadastro">
+            <Setter Property="Panel.ZIndex" Value="1"/>
+            <Setter Property="Margin" Value="10, 5, 0, 40"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="345"/>
+            <Setter Property="Foreground" Value="#9094B6"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="27,0,0,0"/>
+        </Style>
+
+        <Style x:Key="TextBoxCadastro" TargetType="TextBox">
+            <Setter Property="Panel.ZIndex" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="450"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10 35 10 10"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="5" BorderBrush="#606060" BorderThickness="1">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PasswordBoxCadastro" TargetType="PasswordBox">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="450"/>
+            <Setter Property="Margin" Value="10 35 10 10"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="5" BorderBrush="#606060" BorderThickness="1">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ComboBoxCadastro" TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="450"/>
+            <Setter Property="Margin" Value="10 30 10 10"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border CornerRadius="5"  BorderBrush="#606060" BorderThickness="1">
+                                <DockPanel>
+                                    <ToggleButton DockPanel.Dock="Right" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" Width="26" Style="{StaticResource ComboBoxToggleButton}" />
+                                    <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" Margin="14,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                </DockPanel>
+                            </Border>
+                            <Popup x:Name="Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" Width="{TemplateBinding ActualWidth}" AllowsTransparency="True" Focusable="False">
+                                <Border x:Name="PopupBorder" Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="0,0,5,5">
+                                    <ScrollViewer Margin="4">
+                                        <StackPanel IsItemsHost="True"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
 
 
 
