@@ -9,6 +9,6 @@
 
 
     <Grid>
-        <Frame x:Name="Cavalete" NavigationUIVisibility="Hidden" Background="Aqua"/>
+        <Frame x:Name="Cavalete" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
