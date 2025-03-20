@@ -10,3 +10,6 @@ Este repositório contém a implementação da minha parte do projeto de softwar
 
 2. **Sistema de Chamada de Alunos com Text to Speech**
 - Integração com tecnologia de Text to Speech para anunciar a chamada dos alunos, proporcionando uma experiência inovadora e acessível.
+
+## Projeto
+Link para o projeto completo (desenvolvido em equipe): https://github.com/joaocrespin/Oi-Cheguei
